@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bl7teanoq6800"]
+
+[ext_resource type="Script" uid="uid://dn7q6487to1t8" path="res://Scripts/jump_platform.gd" id="1_afe7f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o1s8a"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_afe7f"]
+albedo_color = Color(0.011764706, 1, 0, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_o1s8a"]
+height = 0.001
+
+[node name="Jump_Platform" type="Node3D"]
+script = ExtResource("1_afe7f")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(1.2, 0.5, 1.2)
+material = SubResource("StandardMaterial3D_o1s8a")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28124994, 0)
+operation = 2
+height = 0.2875
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20049995, -1.4901161e-08)
+size = Vector3(1, 0.001, 1)
+material = SubResource("StandardMaterial3D_afe7f")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.241, 0)
+shape = SubResource("CylinderShape3D_o1s8a")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

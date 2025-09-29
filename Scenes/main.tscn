@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://bpmrvciu2q13f"]
+
+[ext_resource type="PackedScene" uid="uid://c0wsr8wvwan15" path="res://Scenes/player.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://7fwv1xk0o3ys" path="res://Scenes/death_zone.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://bl7teanoq6800" path="res://Scenes/jump_platform.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://b66se648qm8qy" path="res://Scenes/world/ground_grass.tscn" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://dptxlyw3q2bvp" path="res://Scenes/world/rock_tall_c_2.tscn" id="5_kry3j"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7u77a"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_jjgbg"]
+sky_material = SubResource("ProceduralSkyMaterial_7u77a")
+
+[sub_resource type="Environment" id="Environment_bo1nx"]
+background_mode = 2
+sky = SubResource("Sky_jjgbg")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bo1nx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.9690158, -0.22868901, 0.09332625, 0, 0.37784076, 0.9258706, -0.24699889, 0.89718324, -0.36613363, 1.1012498, 11.3252735, -4.4203773)
+shadow_enabled = true
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.64999926, -0.050000012, 1.599998)
+use_collision = true
+size = Vector3(13.5, 0.1, 12)
+
+[node name="Jump_Platform" parent="." instance=ExtResource("3_8gbba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4000001, 1.7, -0.30000007)
+
+[node name="death zone" parent="." instance=ExtResource("2_bo1nx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Player" parent="." instance=ExtResource("1_jjgbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1000001, 0.5, 3.7)
+
+[node name="ground_grass2" parent="." instance=ExtResource("4_jjvhh")]
+transform = Transform3D(14.275, 0, 0, 0, 14.275, 0, 0, 0, 14.275, 0.79499984, 0.019499987, 0.8275)
+
+[node name="rock_tallC2" parent="." instance=ExtResource("5_kry3j")]
+transform = Transform3D(2.265, 0, 0, 0, 2.265, 0, 0, 0, 2.265, 4.1, 0, 0)
