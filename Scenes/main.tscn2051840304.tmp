@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpmrvciu2q13f"]
+[gd_scene load_steps=9 format=3 uid="uid://bpmrvciu2q13f"]
 
 [ext_resource type="PackedScene" uid="uid://c0wsr8wvwan15" path="res://Scenes/player.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://7fwv1xk0o3ys" path="res://Scenes/death_zone.tscn" id="2_bo1nx"]
@@ -18,11 +18,6 @@ background_mode = 2
 sky = SubResource("Sky_jjgbg")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_kry3j"]
-size = Vector3(1.541748, 0.23840332, 1.5249023)
-
-[sub_resource type="BoxMesh" id="BoxMesh_21xkr"]
 
 [node name="Main" type="Node3D"]
 
@@ -54,20 +49,11 @@ transform = Transform3D(14.275, 0, 0, 0, 14.275, 0, 0, 0, 14.275, 0.79499984, 0.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3000002, 2.7, -1.3500001)
 use_collision = true
 size = Vector3(2.8, 0.4, 2.7)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3000002, 2.7, -5.6414304)
-use_collision = true
-size = Vector3(2.8, 0.4, 2.7)
-
-[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10872567, 2.2799745, -1.2815467)
 script = ExtResource("5_kry3j")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16484213, 0.5341468, -0.48009634)
-shape = SubResource("BoxShape3D_kry3j")
+[node name="Timer" type="Timer" parent="CSGBox3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D"]
-transform = Transform3D(1.5483944, 0, 0, 0, 0.2462346, 0, 0, 0, 1.5149136, -0.16014218, 0.53106093, -0.4674796)
-mesh = SubResource("BoxMesh_21xkr")
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3000002, 2.7, -5.15)
+use_collision = true
+size = Vector3(2.8, 0.4, 2.7)
