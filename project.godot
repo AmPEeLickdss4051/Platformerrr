@@ -14,6 +14,10 @@ config/name="Platformer"
 run/main_scene="uid://bpmrvciu2q13f"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
+
 [input]
 
 UP={

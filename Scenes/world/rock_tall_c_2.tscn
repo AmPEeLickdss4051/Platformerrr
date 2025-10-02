@@ -99,6 +99,7 @@ height = 0.64930725
 radius = 0.10986328
 
 [node name="rock_tallC2" type="StaticBody3D"]
+transform = Transform3D(3.01, 0, 0, 0, 3.01, 0, 0, 0, 3.01, 0, 0, 0)
 
 [node name="rock_tallC" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
