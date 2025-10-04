@@ -28,7 +28,7 @@ material = SubResource("StandardMaterial3D_fmhr7")
 size = Vector3(20, 1, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m5iqd"]
-size = Vector3(20, 1, 20)
+size = Vector3(20, 0.27974853, 20)
 
 [node name="Sand_Level" type="Node3D"]
 
@@ -47,7 +47,7 @@ mesh = SubResource("BoxMesh_q14at")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.27999997, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.157136e-05, 0)
 shape = SubResource("BoxShape3D_m5iqd")
 
 [node name="Player" parent="." instance=ExtResource("5_gqrdp")]
