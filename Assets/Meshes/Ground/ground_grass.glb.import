@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ced4c5wj7jjh6"
-path="res://.godot/imported/rock_smallD.glb-c1866f41cc544333b60e6fcec1f6e85b.scn"
+uid="uid://c5rewukuaholp"
+path="res://.godot/imported/ground_grass.glb-5aafc892666ca35f792af6e3a8da478d.scn"
 
 [deps]
 
-source_file="res://Assets/Meshes/RockSmall/rock_smallD.glb"
-dest_files=["res://.godot/imported/rock_smallD.glb-c1866f41cc544333b60e6fcec1f6e85b.scn"]
+source_file="res://Assets/Meshes/Ground/ground_grass.glb"
+dest_files=["res://.godot/imported/ground_grass.glb-5aafc892666ca35f792af6e3a8da478d.scn"]
 
 [params]
 
@@ -39,7 +39,7 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "nodes": {
-"PATH:rock_smallD": {
+"PATH:ground_grass": {
 "generate/physics": true,
 "physics/shape_type": 1
 }

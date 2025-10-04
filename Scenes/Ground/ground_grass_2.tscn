@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b66se648qm8qy"]
+[gd_scene load_steps=5 format=3 uid="uid://c62v7kc6nlkb4"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nr6tb"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6mf38"]
+points = PackedVector3Array(-0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, 0.5, 0, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6n5yn"]
 resource_name = "grass"
 albedo_color = Color(0.45234028, 0.92950165, 0.8658767, 1)
 metallic = 1.0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_baeti"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_auetb"]
 _surfaces = [{
 "aabb": AABB(-0.5, 0, -0.5, 1, 1e-05, 1),
 "format": 34896613377,
@@ -19,7 +22,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ntkco"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_fjws6"]
 resource_name = "ground_grass_Mesh ground_grass"
 _surfaces = [{
 "aabb": AABB(-0.5, 0, -0.5, 1, 1e-05, 1),
@@ -27,7 +30,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
-"material": SubResource("StandardMaterial3D_nr6tb"),
+"material": SubResource("StandardMaterial3D_6n5yn"),
 "name": "grass",
 "primitive": 3,
 "uv_scale": Vector4(39.37008, 41.37008, 0, 0),
@@ -35,16 +38,13 @@ _surfaces = [{
 "vertex_data": PackedByteArray(255, 255, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_baeti")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_d0lgt"]
-size = Vector3(1, 0.001, 1)
+shadow_mesh = SubResource("ArrayMesh_auetb")
 
 [node name="ground_grass2" type="StaticBody3D"]
 
-[node name="ground_grass" type="MeshInstance3D" parent="."]
-mesh = SubResource("ArrayMesh_ntkco")
-skeleton = NodePath("")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_d0lgt")
+shape = SubResource("ConvexPolygonShape3D_6mf38")
+
+[node name="ground_grass" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_fjws6")
+skeleton = NodePath("")

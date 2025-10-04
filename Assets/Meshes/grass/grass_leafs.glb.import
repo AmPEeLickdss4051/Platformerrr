@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ced4c5wj7jjh6"
-path="res://.godot/imported/rock_smallD.glb-c1866f41cc544333b60e6fcec1f6e85b.scn"
+uid="uid://8n0nfb2b2nuv"
+path="res://.godot/imported/grass_leafs.glb-4e460ab438bd70f255dd4d9050ebdc4f.scn"
 
 [deps]
 
-source_file="res://Assets/Meshes/RockSmall/rock_smallD.glb"
-dest_files=["res://.godot/imported/rock_smallD.glb-c1866f41cc544333b60e6fcec1f6e85b.scn"]
+source_file="res://Assets/Meshes/grass/grass_leafs.glb"
+dest_files=["res://.godot/imported/grass_leafs.glb-4e460ab438bd70f255dd4d9050ebdc4f.scn"]
 
 [params]
 
@@ -37,13 +37,6 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"nodes": {
-"PATH:rock_smallD": {
-"generate/physics": true,
-"physics/shape_type": 1
-}
-}
-}
+_subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
