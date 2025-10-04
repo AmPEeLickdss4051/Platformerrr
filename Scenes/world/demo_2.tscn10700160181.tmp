@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://caqxp6eh0hbe2"]
+
+[ext_resource type="MeshLibrary" uid="uid://cpvv2rboxh0pp" path="res://tiless.tres" id="1_y87ge"]
+[ext_resource type="PackedScene" uid="uid://do4cy3m3eky88" path="res://Scenes/move_platform.tscn" id="2_p276i"]
+
+[node name="Demo2" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_y87ge")
+cell_size = Vector3(0.5, 0.25, 0.5)
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="Move_Platform" parent="." instance=ExtResource("2_p276i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1245769, 0.31956363, 1.1756775)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9406914, 0.33926338, 0, -0.33926338, 0.9406914, 0, 2.7570853, 5.1984806)

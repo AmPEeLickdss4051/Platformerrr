@@ -1,19 +1,12 @@
-extends AnimatableBody3D
+extends Path3D
 
+@onready var path: PathFollow3D = $PathFollow3D
+@onready var platform: AnimatableBody3D = $PathFollow3D/AnimatableBody3D
 
-var speed: float = 2.0
-var moving_forward: bool = true
-var start_z: float = 0.0
-var end_z: float = 5.0
+@export var speed: float = 1.0
 
-func _process(delta):
-	if moving_forward:
-		# Двигаем вперед
-		position.z += speed * delta
-		if position.z >= end_z:
-			moving_forward = false  # Меняем направление
-	else:
-		# Двигаем назад
-		position.z -= speed * delta
-		if position.z <= start_z:
-			moving_forward = true  # Меняем направление
+func _process(delta: float) -> void:
+	path.progress += speed * delta
+	platform.rotation = Vector3.ZERO
+	platform.position = Vector3.ZERO
+	
