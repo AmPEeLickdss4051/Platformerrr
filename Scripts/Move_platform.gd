@@ -9,4 +9,3 @@ func _process(delta: float) -> void:
 	path.progress += speed * delta
 	platform.rotation = Vector3.ZERO
 	platform.position = Vector3.ZERO
-	

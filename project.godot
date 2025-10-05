@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Platformer"
-run/main_scene="uid://bpmrvciu2q13f"
+run/main_scene="uid://caqxp6eh0hbe2"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
 [editor_plugins]
