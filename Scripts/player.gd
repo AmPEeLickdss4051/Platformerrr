@@ -1,12 +1,23 @@
 extends CharacterBody3D
 
+@export var HEALTH = 100
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
 
 @onready var skin: Node3D = $Skin
 @onready var camera: Camera3D = $SpringArm3D/Camera3D
+@onready var health_bar = $SpringArm3D/Camera3D/UI_Player/TextureProgressBar
 
-var coin: float
+var coin: int
+
+func _ready():
+	Signals.Damage.connect(death)
+
+func death(hit):
+	HEALTH -= hit
+	health_bar.value = HEALTH
+	if HEALTH <= 0:
+		queue_free()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -29,11 +40,9 @@ func _physics_process(delta: float) -> void:
 		var cur_rotation = skin.global_rotation
 		skin.look_at(tar_position, Vector3.UP)
 		skin.global_rotation.y = lerp_angle(cur_rotation.y, skin.global_rotation.y, 0.2)
-		
-		
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-	
+		
 		
 	move_and_slide()

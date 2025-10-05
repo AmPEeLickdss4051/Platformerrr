@@ -18,10 +18,6 @@ sky = SubResource("Sky_tyiwr")
 tonemap_mode = 2
 tonemap_exposure = 0.66
 tonemap_white = 1.45
-ssr_enabled = true
-ssao_enabled = true
-ssil_enabled = true
-sdfgi_enabled = true
 glow_enabled = true
 
 [sub_resource type="Gradient" id="Gradient_tyiwr"]
