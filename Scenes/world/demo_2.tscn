@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://caqxp6eh0hbe2"]
+[gd_scene load_steps=10 format=3 uid="uid://caqxp6eh0hbe2"]
 
 [ext_resource type="MeshLibrary" uid="uid://b81ywtgx7ghoa" path="res://Tiless.tres" id="1_p276i"]
 [ext_resource type="PackedScene" uid="uid://c0wsr8wvwan15" path="res://Scenes/player.tscn" id="2_p276i"]
 [ext_resource type="PackedScene" uid="uid://do4cy3m3eky88" path="res://Scenes/move_platform.tscn" id="3_u4dvm"]
 [ext_resource type="PackedScene" uid="uid://7fwv1xk0o3ys" path="res://Scenes/death_zone.tscn" id="4_oa2at"]
+[ext_resource type="PackedScene" uid="uid://cm28nxmffna73" path="res://Scenes/coin.tscn" id="5_ibhib"]
+[ext_resource type="PackedScene" uid="uid://bl7teanoq6800" path="res://Scenes/jump_platform.tscn" id="6_ly71r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oa2at"]
 sky_top_color = Color(0.14728534, 0.31778133, 0.23401183, 1)
@@ -56,3 +58,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.6, -0.8)
 
 [node name="death zone" parent="." instance=ExtResource("4_oa2at")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 3.2)
+
+[node name="Jump_Platform" parent="." instance=ExtResource("6_ly71r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 0.79999995, 0.90000004)
+
+[node name="collectbles" type="Node3D" parent="."]
+
+[node name="Coin" parent="collectbles" instance=ExtResource("5_ibhib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90000004, -4.2000003)
+
+[node name="Coin2" parent="collectbles" instance=ExtResource("5_ibhib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4, 2.3000002, -7.5)
+
+[node name="Coin3" parent="collectbles" instance=ExtResource("5_ibhib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8, 2.2, -3.5)
+
+[node name="Coin4" parent="collectbles" instance=ExtResource("5_ibhib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6, 2.2, 12.2)
+
+[node name="Coin5" parent="collectbles" instance=ExtResource("5_ibhib")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9, 2.3, 0.3)
