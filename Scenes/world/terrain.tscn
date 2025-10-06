@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c0wsr8wvwan15" path="res://Scenes/player.tscn" id="1_oiv4x"]
 [ext_resource type="Texture2D" uid="uid://b6wg05y8rvxo1" path="res://Assets/textures/Sand/Ground055S_1K-JPG_Color.jpg" id="1_x8y4i"]
-[ext_resource type="Texture2D" uid="uid://chrfad5fxwjy6" path="res://Assets/textures/Sand/Ground055S_1K-JPG_NormalDX.jpg" id="2_ih6by"]
+[ext_resource type="Texture2D" uid="uid://cq0lyagwkmrd0" path="res://Assets/textures/Sand/Ground055S_1K-JPG_NormalGL.jpg" id="2_x8y4i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oiv4x"]
 sky_top_color = Color(0.5041209, 0.42991182, 0.40988517, 1)
@@ -82,7 +82,7 @@ lod0_range = 128.0
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_uh8nt"]
 name = "Ground055S_1K-JPG_Color"
 albedo_texture = ExtResource("1_x8y4i")
-normal_texture = ExtResource("2_ih6by")
+normal_texture = ExtResource("2_x8y4i")
 normal_depth = 1.103
 uv_scale = 0.405
 
@@ -96,7 +96,7 @@ texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_
 environment = SubResource("Environment_x8y4i")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 21.6, 0)
+transform = Transform3D(0.46793, -0.44188276, 0.7653634, 0, 0.8660254, 0.5, -0.8837655, -0.233965, 0.40523925, 0, 21.6, 0)
 shadow_enabled = true
 
 [node name="Terrain3D" type="Terrain3D" parent="."]

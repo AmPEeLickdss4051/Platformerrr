@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxasrqdgwl7lu"]
+
+[ext_resource type="Script" uid="uid://dculyhmmem1wj" path="res://Scripts/start.gd" id="1_60k44"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_h7grp"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 157.0
+offset_right = 775.0
+offset_bottom = 316.0
+theme_override_font_sizes/font_size = 76
+text = "Play"
+icon = SubResource("ViewportTexture_h7grp")
+script = ExtResource("1_60k44")
+
+[node name="MenuBar" type="MenuBar" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
