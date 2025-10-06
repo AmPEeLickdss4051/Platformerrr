@@ -46,8 +46,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 		
-	if Input.is_action_just_pressed("Pause"):
-		#Input.mouse_mode = Input.MOUSE_MODE_CONFINED
-		#get_tree().change_scene_to_file("res://Scenes/mainMenu.tscn")
+	if Input.is_action_just_pressed("Pause") or coin == 5:
+		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+		get_tree().change_scene_to_file("res://Scenes/mainmanu.tscn")
 		
 	move_and_slide()

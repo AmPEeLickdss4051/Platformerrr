@@ -1,0 +1,35 @@
+[gd_scene load_steps=11 format=3 uid="uid://dwuaavjh6v0j5"]
+
+[ext_resource type="PackedScene" uid="uid://d213sfo1yqoqi" path="res://Scenes/rocktile/stone_large_a_2.tscn" id="1_8gfpy"]
+[ext_resource type="PackedScene" uid="uid://bldtrbkgrx3cv" path="res://Scenes/rocktile/stone_large_c_2.tscn" id="2_rpbnt"]
+[ext_resource type="PackedScene" uid="uid://cact38ttpfn1t" path="res://Scenes/rocktile/stone_large_f_2.tscn" id="3_oni00"]
+[ext_resource type="PackedScene" uid="uid://dhj8rm1567me" path="res://Scenes/rocktile/stone_tall_a_2.tscn" id="9_d5ffs"]
+[ext_resource type="PackedScene" uid="uid://bwc80218wg7bo" path="res://Scenes/rocktile/stone_tall_b_2.tscn" id="10_u17qk"]
+[ext_resource type="PackedScene" uid="uid://br3ltl48uky5" path="res://Scenes/rocktile/stone_tall_c_2.tscn" id="11_jf76w"]
+[ext_resource type="PackedScene" uid="uid://6qof58rsyfdv" path="res://Scenes/rocktile/stone_tall_e_2.tscn" id="12_06re1"]
+[ext_resource type="PackedScene" uid="uid://jba8selxdstg" path="res://Scenes/rocktile/stone_tall_f_2.tscn" id="13_0raul"]
+[ext_resource type="PackedScene" uid="uid://bneasw1ioxmn5" path="res://Scenes/rocktile/stone_tall_g_2.tscn" id="14_ctaef"]
+[ext_resource type="PackedScene" uid="uid://ced5axbmg1k67" path="res://Scenes/rocktile/stone_tall_i_2.tscn" id="15_akv7w"]
+
+[node name="Rocks" type="Node3D"]
+
+[node name="stone_largeA2" parent="." instance=ExtResource("1_8gfpy")]
+visible = false
+
+[node name="stone_largeC2" parent="." instance=ExtResource("2_rpbnt")]
+
+[node name="stone_largeF2" parent="." instance=ExtResource("3_oni00")]
+
+[node name="stone_tallA2" parent="." instance=ExtResource("9_d5ffs")]
+
+[node name="stone_tallB2" parent="." instance=ExtResource("10_u17qk")]
+
+[node name="stone_tallC2" parent="." instance=ExtResource("11_jf76w")]
+
+[node name="stone_tallE2" parent="." instance=ExtResource("12_06re1")]
+
+[node name="stone_tallF2" parent="." instance=ExtResource("13_0raul")]
+
+[node name="stone_tallG2" parent="." instance=ExtResource("14_ctaef")]
+
+[node name="stone_tallI2" parent="." instance=ExtResource("15_akv7w")]

@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cq0ae4jlgtmql"]
+[gd_scene load_steps=10 format=3 uid="uid://caqxp6eh0hbe2"]
 
-[ext_resource type="MeshLibrary" uid="uid://roc2xv70tft5" path="res://Tiless.tres" id="1_p276i"]
+[ext_resource type="MeshLibrary" path="res://Tiless.tres" id="1_p276i"]
 [ext_resource type="PackedScene" uid="uid://c0wsr8wvwan15" path="res://Scenes/player.tscn" id="2_p276i"]
 [ext_resource type="PackedScene" uid="uid://do4cy3m3eky88" path="res://Scenes/move_platform.tscn" id="3_u4dvm"]
 [ext_resource type="PackedScene" uid="uid://7fwv1xk0o3ys" path="res://Scenes/death_zone.tscn" id="4_oa2at"]
@@ -19,10 +19,6 @@ sky_material = SubResource("ProceduralSkyMaterial_oa2at")
 background_mode = 2
 sky = SubResource("Sky_ibhib")
 tonemap_mode = 2
-ssr_enabled = true
-ssao_enabled = true
-ssil_enabled = true
-sdfgi_enabled = true
 glow_enabled = true
 
 [node name="Demo2" type="Node3D"]

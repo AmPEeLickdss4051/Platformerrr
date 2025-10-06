@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Platformer"
-run/main_scene="uid://dxasrqdgwl7lu"
+run/main_scene="uid://cdhbtqmbr070f"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]
@@ -57,6 +57,12 @@ Pause={
 
 [rendering]
 
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=5
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=5
 environment/ssao/quality=3
 environment/ssil/quality=3
 environment/subsurface_scattering/subsurface_scattering_quality=3
+lights_and_shadows/positional_shadow/atlas_quadrant_0_subdiv=3
+lights_and_shadows/positional_shadow/atlas_quadrant_1_subdiv=4
+lights_and_shadows/positional_shadow/atlas_quadrant_2_subdiv=5
+lights_and_shadows/positional_shadow/atlas_quadrant_3_subdiv=6
