@@ -12,8 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://cact38ttpfn1t" path="res://Scenes/rocktile/stone_large_f_2.tscn" id="10_m5mi4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oiv4x"]
-sky_top_color = Color(0.5041209, 0.42991182, 0.40988517, 1)
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+sky_top_color = Color(0.5841782, 0.41185406, 0.1759857, 1)
+sky_horizon_color = Color(0.83712375, 0.65578276, 0.4137585, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
 [sub_resource type="Sky" id="Sky_tyiwr"]
@@ -184,7 +184,6 @@ mesh = SubResource("BoxMesh_uh8nt")
 skeleton = NodePath("../..")
 
 [node name="Rocks" type="Node3D" parent="."]
-visible = false
 
 [node name="stone_tallI2" parent="Rocks" instance=ExtResource("4_v1ofk")]
 transform = Transform3D(8.917682, -1.6228853, 2.8109198, 9.673151e-08, 8.218579, 4.7449994, -3.2457705, -4.458841, 7.7229376, -3.3000002, -0.8, 19.000002)

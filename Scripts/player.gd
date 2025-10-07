@@ -17,7 +17,7 @@ func death(hit):
 	HEALTH -= hit
 	health_bar.value = HEALTH
 	if HEALTH <= 0:
-		queue_free()
+		get_tree().quit()
 		
 	
 
