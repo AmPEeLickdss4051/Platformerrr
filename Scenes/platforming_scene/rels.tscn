@@ -10,6 +10,7 @@ point_count = 6
 [node name="rels" type="Node3D"]
 
 [node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
 curve = SubResource("Curve3D_rsgrw")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
