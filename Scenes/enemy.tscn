@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://cy52qohalkvdj"]
+
+[ext_resource type="Script" uid="uid://1pjq0iddlyol" path="res://Scripts/enemy.gd" id="1_hghv2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_287tu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0830c"]
+radius = 8.207763
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hghv2"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1f0kj"]
+material = SubResource("StandardMaterial3D_hghv2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1f0kj"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_afpow"]
+material = SubResource("StandardMaterial3D_1f0kj")
+
+[node name="Enemy" type="CharacterBody3D"]
+transform = Transform3D(0.42, 0, 0, 0, 0.42, 0, 0, 0, 0.42, 0, 0, 0)
+script = ExtResource("1_hghv2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_287tu")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_0830c")
+
+[node name="skin" type="Node3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="skin"]
+transform = Transform3D(0.7735712, 0, 0, 0, 0.44016784, 0, 0, 0, 0.80573714, 0, 0.506327, -0.25408104)
+mesh = SubResource("BoxMesh_1f0kj")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="skin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.773948e-08)
+mesh = SubResource("CapsuleMesh_afpow")
+skeleton = NodePath("../..")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
