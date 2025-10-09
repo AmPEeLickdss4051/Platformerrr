@@ -11,16 +11,12 @@ config_version=5
 [application]
 
 config/name="Platformer"
-run/main_scene="uid://cdhbtqmbr070f"
+run/main_scene="uid://dyhx25tf4hxkc"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]
 
 Signals="*res://Scripts/Signals.gd"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
 
 [input]
 
