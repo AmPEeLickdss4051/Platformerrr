@@ -147,4 +147,3 @@ texture_under = ExtResource("3_vgqql")
 texture_progress = ExtResource("4_fkybt")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
