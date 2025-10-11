@@ -51,3 +51,7 @@ func _physics_process(delta: float) -> void:
 		get_tree().change_scene_to_file("res://Scenes/mainmanu.tscn")
 		
 	move_and_slide()
+
+
+func _on_platfoming_area_body_entered(body: Node3D) -> void:
+	print("qwe")

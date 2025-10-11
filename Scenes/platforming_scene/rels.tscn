@@ -1,29 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://lcegc1j65ve2"]
+[gd_scene load_steps=2 format=3 uid="uid://bn6vmiwsk0jyt"]
 
-[sub_resource type="Curve3D" id="Curve3D_rsgrw"]
+[sub_resource type="Curve3D" id="Curve3D_lcpvy"]
 _data = {
-"points": PackedVector3Array(-1, 0, 0, 1, 0, 0, -4, 0, -1, -1, 0, 0, 1, 0, 0, -2, 0, -2, -1, 0, 0, 1, 0, 0, 0, 0, -1, -1, 0, 0, 1, 0, 0, 2, 0, -2, -1, 0, 0, 1, 0, 0, 4, 0, -1, -1, 0, 0, 1, 0, 0, 6, 0, -2),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.9, 0, -1, -1.7, 0, 0, 1.7, 0, 0, -2, 0, -2.1000001, -1.4, 0, 0, 1.4, 0, 0, 1.4, 0, -2.4, -1.6, 0, 0, 1.6, 0, 0, 4.4, 0, -0.8, 0, 0, 0, 0, 0, 0, 7.1, 0, -0.3),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
-point_count = 6
+point_count = 5
 
-[node name="rels" type="Node3D"]
+[node name="Rels" type="Node3D"]
 
 [node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
-curve = SubResource("Curve3D_rsgrw")
+curve = SubResource("Curve3D_lcpvy")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.6757232, 0, -0.7371525, 0, 1, 0, 0.7371525, 0, 0.6757232, -4.9, 0, -1)
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
 use_collision = true
-polygon = PackedVector2Array(0, 0, 0, 0.1, -0.1, 0.1, -0.1, 0)
+collision_layer = 8
+collision_mask = 4
+polygon = PackedVector2Array(-0.1, -0.2, -0.1, 0, 0.1, 0, 0.1, -0.2)
 mode = 2
 path_node = NodePath("..")
 path_interval_type = 0
-path_interval = 0.2
+path_interval = 0.3
 path_simplify_angle = 0.0
 path_rotation = 2
 path_rotation_accurate = false
 path_local = false
 path_continuous_u = true
-path_u_distance = 0.0
+path_u_distance = 1.0
 path_joined = false

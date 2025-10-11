@@ -55,6 +55,13 @@ Pause={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Envitonment"
+3d_physics/layer_2="Body"
+3d_physics/layer_3="RayCast"
+3d_physics/layer_4="Rels"
+
 [rendering]
 
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=5
