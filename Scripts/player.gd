@@ -11,8 +11,8 @@ extends CharacterBody3D
 
 var direction := Vector3.ZERO
 var coin: int
-
-var doubleJumpActivated = false
+var doubleJumpActivated = true
+var Action = false
 
 func _ready():
 	Signals.Damage.connect(death)
@@ -27,6 +27,9 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		
+	if is_on_floor():
+		doubleJumpActivated = true
 	
 	var input_dir := Input.get_vector("LEFT", "RIGHT", "UP", "DOWN")
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -35,7 +38,17 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Pause") or coin == 5:
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 		get_tree().change_scene_to_file("res://Scenes/mainmanu.tscn")
-	
+		
+	if Input.is_action_just_pressed("Apply"):
+		Action = true
+		print(Action)
+	if Input.is_action_just_released("Apply"):
+		Action = false
+		print(Action)
+
+func idle():
+	pass
+
 func move():
 	if direction != Vector3.ZERO:
 		velocity.x = direction.x * SPEED
@@ -49,16 +62,11 @@ func move():
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
 func jump():
-	if is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		doubleJumpActivated = true
-		print(doubleJumpActivated)
-		
+	velocity.y = JUMP_VELOCITY
 
 func double_jump():
 	velocity.y = JUMP_VELOCITY
 	doubleJumpActivated = false
-	print(doubleJumpActivated)
 
 func acceleration():
 	if direction != Vector3.ZERO:
@@ -71,6 +79,8 @@ func acceleration():
 	else:
 		velocity.x = move_toward(velocity.x, 0, ACCELERATION)
 		velocity.z = move_toward(velocity.z, 0, ACCELERATION)
-	
-	
-		
+
+
+func _on_area_3d_body_entered(body):
+	if Action == true:
+		velocity.y = JUMP_VELOCITY

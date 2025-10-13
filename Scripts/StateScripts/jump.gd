@@ -12,7 +12,7 @@ func physics_update(_delta: float) -> void:
 	if Input.is_action_just_pressed("Acceleration"):
 		state_machine.change_state("Acceleration")
 	
-	if Input.is_action_just_pressed("JUMP") and player.doubleJumpActivated == true:
+	if Input.is_action_just_pressed("JUMP") and player.doubleJumpActivated == true and not player.is_on_floor():
 		state_machine.change_state("DoubleJump")
 	
 	player.jump()

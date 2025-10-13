@@ -65,7 +65,7 @@ collision_layer = 2
 floor_stop_on_slope = false
 script = ExtResource("1_v0iea")
 SPEED = 4.0
-ACCELERATION = 10.0
+ACCELERATION = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.42000002, 0, 0, 0, 0.42000002, 0, 0, 0, 0.42000002, 0, 0, 0)
