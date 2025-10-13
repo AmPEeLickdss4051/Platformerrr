@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://cm28nxmffna73"]
+[gd_scene load_steps=20 format=4 uid="uid://cm28nxmffna73"]
 
 [ext_resource type="Texture2D" uid="uid://5wmghjqm6yf7" path="res://Assets/Meshes/Platformer/Textures/colormap.png" id="1_2qo34"]
 [ext_resource type="Script" uid="uid://bj2w1sfn2dcht" path="res://Scripts/coin.gd" id="1_jgi06"]
+[ext_resource type="Shader" uid="uid://cw1weafoxmq0h" path="res://Assets/Shaders/coins.tres" id="3_h2p6v"]
+[ext_resource type="Texture2D" uid="uid://eyelka5ftvfv" path="res://Assets/particle/47.png" id="4_ffmqm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jhpuq"]
 resource_name = "colormap"
@@ -84,7 +86,54 @@ _data = {
 &"coin": SubResource("Animation_2qo34")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_81h6x"]
+render_priority = 0
+shader = ExtResource("3_h2p6v")
+shader_parameter/MainTex = ExtResource("4_ffmqm")
+
+[sub_resource type="Curve" id="Curve_qbp07"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2l7mo"]
+curve = SubResource("Curve_qbp07")
+
+[sub_resource type="CurveTexture" id="CurveTexture_q30xt"]
+
+[sub_resource type="Curve" id="Curve_7w2r2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tthw5"]
+curve = SubResource("Curve_7w2r2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6pu15"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1000, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 0.2
+emission_ring_inner_radius = 0.2
+emission_ring_cone_angle = 90.0
+radial_velocity_min = 0.49997765
+radial_velocity_max = 0.99997765
+radial_velocity_curve = SubResource("CurveTexture_q30xt")
+gravity = Vector3(0, -9, 0)
+radial_accel_min = 0.99999774
+radial_accel_max = 0.99999774
+radial_accel_curve = SubResource("CurveTexture_2l7mo")
+scale_min = 0.19999999
+scale_max = 0.29999998
+scale_curve = SubResource("CurveTexture_tthw5")
+color = Color(8.123444, 8.123444, 0, 1)
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_vgc30"]
+
 [node name="Coin" type="Area3D"]
+collision_mask = 2
 script = ExtResource("1_jgi06")
 
 [node name="coin-gold" type="MeshInstance3D" parent="."]
@@ -100,5 +149,18 @@ libraries = {
 &"": SubResource("AnimationLibrary_g537i")
 }
 autoplay = "coin"
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+material_override = SubResource("ShaderMaterial_81h6x")
+emitting = false
+amount = 15
+lifetime = 0.5
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_6pu15")
+draw_pass_1 = SubResource("QuadMesh_vgc30")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

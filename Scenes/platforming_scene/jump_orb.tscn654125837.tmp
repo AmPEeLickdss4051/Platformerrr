@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://yjfepnm4ddsc"]
+[gd_scene load_steps=4 format=3 uid="uid://yjfepnm4ddsc"]
+
+[ext_resource type="Script" uid="uid://p37blqyt33lg" path="res://Scripts/PlatformScript/jump_orb.gd" id="1_u6sjj"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_500iu"]
 
@@ -6,6 +8,7 @@
 
 [node name="JumpOrb" type="Node3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_u6sjj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_500iu")
@@ -16,3 +19,5 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_u6sjj")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

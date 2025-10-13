@@ -1,0 +1,74 @@
+[gd_scene load_steps=14 format=3 uid="uid://d2jt5uhihtja6"]
+
+[ext_resource type="Shader" uid="uid://dw6y0gwlkaruj" path="res://Assets/Shaders/portal.tres" id="1_5j81f"]
+[ext_resource type="Texture2D" uid="uid://dtpuxqfxuytoc" path="res://Assets/particle/sparkle.png" id="2_fkdc1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fvjbr"]
+render_priority = 0
+shader = ExtResource("1_5j81f")
+shader_parameter/MainTex = ExtResource("2_fkdc1")
+
+[sub_resource type="Curve" id="Curve_5j81f"]
+_limits = [-2.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fkdc1"]
+curve = SubResource("Curve_5j81f")
+
+[sub_resource type="Curve" id="Curve_fvjbr"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6vyp8"]
+curve = SubResource("Curve_fvjbr")
+
+[sub_resource type="Curve" id="Curve_tm7ie"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rdw23"]
+curve = SubResource("Curve_tm7ie")
+
+[sub_resource type="Curve" id="Curve_rdw23"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_count = 25
+
+[sub_resource type="CurveTexture" id="CurveTexture_3bx8n"]
+curve = SubResource("Curve_rdw23")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wxvta"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 0.75
+emission_ring_inner_radius = 0.75
+emission_ring_cone_angle = 90.0
+orbit_velocity_min = 0.1000001
+orbit_velocity_max = 0.1000001
+orbit_velocity_curve = SubResource("CurveTexture_fkdc1")
+radial_velocity_min = -0.50002235
+radial_velocity_max = -2.2351742e-05
+radial_velocity_curve = SubResource("CurveTexture_rdw23")
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -0.10000224
+radial_accel_max = 0.49999776
+radial_accel_curve = SubResource("CurveTexture_6vyp8")
+scale_min = 0.19999999
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_3bx8n")
+color = Color(0.8023341, 3.3629613, 4.1503997, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ck1iw"]
+
+[node name="Portal" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_fvjbr")
+amount = 500
+fixed_fps = 60
+trail_lifetime = 1.72
+process_material = SubResource("ParticleProcessMaterial_wxvta")
+draw_pass_1 = SubResource("QuadMesh_ck1iw")
