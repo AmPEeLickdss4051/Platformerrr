@@ -59,7 +59,7 @@ radial_accel_curve = SubResource("CurveTexture_6vyp8")
 scale_min = 0.19999999
 scale_max = 0.5
 scale_curve = SubResource("CurveTexture_3bx8n")
-color = Color(0.8023341, 3.3629613, 4.1503997, 1)
+color = Color(3.820355, 15.370708, 18.892157, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_ck1iw"]
 
@@ -67,7 +67,7 @@ color = Color(0.8023341, 3.3629613, 4.1503997, 1)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 material_override = SubResource("ShaderMaterial_fvjbr")
-amount = 500
+amount = 400
 fixed_fps = 60
 trail_lifetime = 1.72
 process_material = SubResource("ParticleProcessMaterial_wxvta")
