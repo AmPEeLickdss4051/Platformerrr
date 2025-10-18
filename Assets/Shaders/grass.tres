@@ -1,0 +1,81 @@
+[gd_resource type="Shader" format=3 uid="uid://cr1grgcso0jqt"]
+
+[resource]
+code = "shader_type spatial;
+render_mode cull_disabled;
+
+uniform vec3 color : source_color;
+uniform vec3 color2 : source_color;
+uniform sampler2D noise;
+uniform sampler2D WindNoise;
+uniform float noiseScalse = 20.0;
+
+varying vec3 worldPos;
+
+void vertex() {
+	worldPos = (MODELVIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	
+	// Input:5
+	vec3 n_out5p0 = VERTEX;
+
+// Input:12
+	vec3 n_out12p0 = NODE_POSITION_WORLD;
+
+// VectorDecompose:13
+	float n_out13p0 = n_out12p0.x;
+	float n_out13p1 = n_out12p0.y;
+	float n_out13p2 = n_out12p0.z;
+
+// VectorCompose:14
+	vec2 n_out14p0 = vec2(n_out13p0, n_out13p2);
+
+// Input:11
+	float n_out11p0 = TIME;
+
+// VectorOp:15
+	vec2 n_out15p0 = n_out14p0 + vec2(n_out11p0);
+
+// UVFunc:10
+	vec2 n_in10p1 = vec2(0.10000, 0.10000);
+	vec2 n_out10p0 = n_out15p0 * n_in10p1 + UV;
+
+	vec4 n_out8p0;
+// Texture2D:8
+	n_out8p0 = texture(WindNoise, n_out10p0);
+
+// Input:2
+	vec2 n_out2p0 = UV;
+
+// VectorDecompose:3
+	float n_out3p0 = n_out2p0.x;
+	float n_out3p1 = n_out2p0.y;
+
+// FloatFunc:4
+	float n_out4p0 = 1.0 - n_out3p1;
+
+// VectorOp:9
+	vec3 n_out9p0 = vec3(n_out8p0.xyz) * vec3(n_out4p0);
+
+// VectorOp:16
+	vec3 n_in16p1 = vec3(0.10000, 0.10000, 0.10000);
+	vec3 n_out16p0 = n_out9p0 * n_in16p1;
+
+// VectorOp:6
+	vec3 n_out6p0 = n_out5p0 + n_out16p0;
+
+// Output:0
+	VERTEX = n_out6p0;
+}
+
+void fragment() {
+	vec3 noiseLevel = texture(noise, worldPos.xz / noiseScalse).rgb;
+	ALBEDO = mix(color, color2, UV.y) * mix(color, color2, noiseLevel.r);
+	if (!FRONT_FACING) {
+		NORMAL = -NORMAL;
+	}
+}
+
+//void vertex() {
+
+//}
+"
