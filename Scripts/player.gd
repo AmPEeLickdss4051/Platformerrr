@@ -3,11 +3,13 @@ extends CharacterBody3D
 @export var HEALTH = 100
 @export var SPEED = 3.0
 @export var JUMP_VELOCITY = 3.5
+@export var JUMP_ACC = 3.8
 @export var ACCELERATION = 4.0
 
 @onready var skin: Node3D = $Skin
-@onready var camera: Camera3D = $SpringArm3D/Camera3D
-@onready var health_bar = $SpringArm3D/Camera3D/UI_Player/TextureProgressBar
+@onready var camera: Camera3D = $CameraPivot/SpringArm3D/Camera3D
+@onready var health_bar = $UI_Player/TextureProgressBar
+
 
 var direction := Vector3.ZERO
 var coin: int
@@ -58,13 +60,6 @@ func move():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
-func jump():
-	velocity.y = JUMP_VELOCITY
-
-func double_jump():
-	velocity.y = JUMP_VELOCITY
-	doubleJumpActivated = false
-
 func acceleration():
 	if direction != Vector3.ZERO:
 		velocity.x = direction.x * ACCELERATION
@@ -76,9 +71,22 @@ func acceleration():
 	else:
 		velocity.x = move_toward(velocity.x, 0, ACCELERATION)
 		velocity.z = move_toward(velocity.z, 0, ACCELERATION)
+	
+func jump():
+	velocity.y = JUMP_VELOCITY
+
+func jump_acc():
+	velocity.y = JUMP_ACC
+	velocity.x = direction.x * ACCELERATION
+	velocity.z = direction.z * ACCELERATION
+	
+func double_jump():
+	velocity.y = JUMP_VELOCITY
+	doubleJumpActivated = false
+	
 
 
-func _on_area_3d_body_entered(body: Node3D) -> void:
+func _on_area_3d_area_entered(area: Area3D) -> void:
 	can_Action = true
-func _on_area_3d_body_exited(body: Node3D) -> void:
+func _on_area_3d_area_exited(area: Area3D) -> void:
 	can_Action = false

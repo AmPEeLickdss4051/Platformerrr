@@ -1,7 +1,7 @@
-[gd_scene load_steps=31 format=3 uid="uid://c0wsr8wvwan15"]
+[gd_scene load_steps=30 format=3 uid="uid://c0wsr8wvwan15"]
 
 [ext_resource type="Script" uid="uid://cq1rojsb8820q" path="res://Scripts/player.gd" id="1_v0iea"]
-[ext_resource type="Script" uid="uid://bj4f2s1bcqn04" path="res://Scripts/camera_pivot.gd" id="2_ukyrk"]
+[ext_resource type="Script" uid="uid://dsmukhkys5pkg" path="res://Scripts/camera_spring_arm.gd" id="2_cvnsp"]
 [ext_resource type="Script" uid="uid://bchykk64k1ly5" path="res://Scripts/coin_UI.gd" id="3_fkybt"]
 [ext_resource type="Texture2D" uid="uid://dcrq2dov6fbm5" path="res://Assets/UI/Extra/Double/bar_shadow_round_large.png" id="3_vgqql"]
 [ext_resource type="Texture2D" uid="uid://cwp17i8bnc6ow" path="res://Assets/UI/Red/Double/bar_round_gloss_large.png" id="4_fkybt"]
@@ -57,9 +57,6 @@ albedo_color = Color(0.33251545, 0.20696324, 0.020516504, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_cvnsp"]
 material = SubResource("StandardMaterial3D_v0iea")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_pu2lt"]
-size = Vector3(0.4, 0.2, 0.4)
 
 [sub_resource type="LabelSettings" id="LabelSettings_x3wgy"]
 font_size = 30
@@ -129,47 +126,6 @@ transform = Transform3D(0.42000002, 0, 0, 0, 0.42000002, 0, 0, 0, 0.42000002, 0,
 mesh = SubResource("CapsuleMesh_cvnsp")
 skeleton = NodePath("../..")
 
-[node name="leg" type="Area3D" parent="Skin"]
-collision_layer = 8
-collision_mask = 4
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Skin/leg"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4901161e-08, -0.39999998, -1.4901161e-08)
-shape = SubResource("BoxShape3D_pu2lt")
-
-[node name="CameraPivot" type="Node3D" parent="."]
-script = ExtResource("2_ukyrk")
-Mouse_sens = 0.004
-
-[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.3, 0.3, 0)
-spring_length = 1.5
-
-[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-
-[node name="UI_Player" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
-
-[node name="COIN" type="Label" parent="UI_Player"]
-offset_left = 59.0
-offset_top = 104.0
-offset_right = 143.0
-offset_bottom = 148.0
-text = "GOLD"
-label_settings = SubResource("LabelSettings_x3wgy")
-script = ExtResource("3_fkybt")
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="UI_Player"]
-offset_left = 35.0
-offset_top = 27.0
-offset_right = 242.0
-offset_bottom = 85.0
-value = 100.0
-nine_patch_stretch = true
-texture_under = ExtResource("3_vgqql")
-texture_progress = ExtResource("4_fkybt")
-
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("6_3smsa")
 initial_state = NodePath("Idle")
@@ -198,3 +154,35 @@ metadata/_custom_type_script = "uid://cpky2bwd5l7pf"
 [node name="JumpAcc" type="Node" parent="StateMachine"]
 script = ExtResource("12_pu2lt")
 metadata/_custom_type_script = "uid://cpky2bwd5l7pf"
+
+[node name="CameraPivot" type="Node3D" parent="."]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.20000002, 0)
+spring_length = 1.5
+script = ExtResource("2_cvnsp")
+Mouse_sens = 0.003
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="UI_Player" type="Node3D" parent="CameraPivot/SpringArm3D/Camera3D"]
+
+[node name="COIN" type="Label" parent="CameraPivot/SpringArm3D/Camera3D/UI_Player"]
+offset_left = 59.0
+offset_top = 104.0
+offset_right = 143.0
+offset_bottom = 148.0
+text = "GOLD"
+label_settings = SubResource("LabelSettings_x3wgy")
+script = ExtResource("3_fkybt")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CameraPivot/SpringArm3D/Camera3D/UI_Player"]
+offset_left = 35.0
+offset_top = 27.0
+offset_right = 242.0
+offset_bottom = 85.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_vgqql")
+texture_progress = ExtResource("4_fkybt")

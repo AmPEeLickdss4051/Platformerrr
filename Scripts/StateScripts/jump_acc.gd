@@ -8,8 +8,8 @@ func physics_update(_delta: float) -> void:
 		print(state_machine.current_state)
 		
 	if player.direction != Vector3.ZERO:
-		state_machine.change_state("Move")
+		state_machine.change_state("Acceleration")
 		print(state_machine.current_state)
 	
-	player.double_jump()
+	player.jump_acc()
 	player.move_and_slide()
