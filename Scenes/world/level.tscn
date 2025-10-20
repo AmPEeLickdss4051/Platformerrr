@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cnibiqeln00mm" path="res://Scenes/effects/fire.tscn" id="9_hlgwg"]
 [ext_resource type="PackedScene" uid="uid://d2jt5uhihtja6" path="res://Scenes/effects/portal.tscn" id="10_i5opp"]
 [ext_resource type="PackedScene" uid="uid://cm28nxmffna73" path="res://Scenes/coin.tscn" id="11_vfqpm"]
-[ext_resource type="ArrayMesh" uid="uid://oakrkkr5flte" path="res://Assets/Meshes/mesh/gras.res" id="14_gn6o5"]
+[ext_resource type="ArrayMesh" uid="uid://bk1tjf4872lby" path="res://Assets/Meshes/mesh/gras.res" id="14_gn6o5"]
 [ext_resource type="PackedScene" uid="uid://v7finkhgx3td" path="res://Assets/Meshes/Stylized Nature/Bush_Common_Flowers.gltf" id="14_l1q4p"]
 [ext_resource type="PackedScene" uid="uid://dpnhvidjcn67q" path="res://Assets/Meshes/Stylized Nature/CommonTree_1.gltf" id="15_lfu2o"]
 

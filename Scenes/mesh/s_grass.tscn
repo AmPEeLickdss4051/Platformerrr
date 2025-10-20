@@ -1,8 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://c71lw6w58y2js"]
+[gd_scene load_steps=5 format=3 uid="uid://c71lw6w58y2js"]
 
-[ext_resource type="ArrayMesh" uid="uid://oakrkkr5flte" path="res://Assets/Meshes/mesh/gras.res" id="1_6fks3"]
+[ext_resource type="ArrayMesh" uid="uid://bk1tjf4872lby" path="res://Assets/Meshes/mesh/gras.res" id="1_6fks3"]
+[ext_resource type="Shader" uid="uid://cr1grgcso0jqt" path="res://Assets/Shaders/grass.tres" id="1_ar28j"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wgcww"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q2qj7"]
+render_priority = 0
+shader = ExtResource("1_ar28j")
+shader_parameter/color = Color(0, 1, 0, 1)
+shader_parameter/color2 = Color(0, 0.64705884, 0, 1)
+shader_parameter/WindNoise = SubResource("NoiseTexture2D_wgcww")
+shader_parameter/noiseScalse = 20.0
 
 [node name="S_Grass" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_q2qj7")
 mesh = ExtResource("1_6fks3")
