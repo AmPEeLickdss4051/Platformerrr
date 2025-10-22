@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://dyhx25tf4hxkc"]
+[gd_scene load_steps=25 format=3 uid="uid://dyhx25tf4hxkc"]
 
 [ext_resource type="PackedScene" uid="uid://c0wsr8wvwan15" path="res://Scenes/player.tscn" id="1_okmw2"]
 [ext_resource type="Texture2D" uid="uid://cijuxxaw7uw0f" path="res://Assets/texture/Prototype tex/PNG/Dark/texture_08.png" id="2_h8imw"]
 [ext_resource type="PackedScene" uid="uid://7fwv1xk0o3ys" path="res://Scenes/death_zone.tscn" id="3_kycuw"]
 [ext_resource type="PackedScene" uid="uid://cnibiqeln00mm" path="res://Scenes/effects/fire.tscn" id="9_hlgwg"]
+[ext_resource type="Shader" uid="uid://cr1grgcso0jqt" path="res://Assets/Shaders/grass.tres" id="9_i5opp"]
 [ext_resource type="PackedScene" uid="uid://d2jt5uhihtja6" path="res://Scenes/effects/portal.tscn" id="10_i5opp"]
 [ext_resource type="PackedScene" uid="uid://cm28nxmffna73" path="res://Scenes/coin.tscn" id="11_vfqpm"]
 [ext_resource type="ArrayMesh" uid="uid://bk1tjf4872lby" path="res://Assets/Meshes/mesh/gras.res" id="14_gn6o5"]
@@ -48,6 +49,16 @@ albedo_color = Color(0, 0.33003333, 0, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_gagoq"]
 material = SubResource("StandardMaterial3D_gn6o5")
 size = Vector2(10, 10)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vfqpm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kycuw"]
+render_priority = 0
+shader = ExtResource("9_i5opp")
+shader_parameter/color = Color(0, 1, 0, 1)
+shader_parameter/color2 = Color(0, 0.5803922, 0, 1)
+shader_parameter/WindNoise = SubResource("NoiseTexture2D_vfqpm")
+shader_parameter/noiseScalse = 20.0
 
 [sub_resource type="MultiMesh" id="MultiMesh_gn6o5"]
 transform_format = 1
@@ -193,6 +204,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -6.768001, 0.29999998, 
 mesh = SubResource("PlaneMesh_gagoq")
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="grass"]
+material_override = SubResource("ShaderMaterial_kycuw")
 multimesh = SubResource("MultiMesh_gn6o5")
 
 [node name="Orbs" type="Node3D" parent="."]

@@ -6,6 +6,8 @@ extends CharacterBody3D
 @export var JUMP_ACC = 3.8
 @export var ACCELERATION = 4.0
 @export var BLEND_SPEED = 15.0
+@export var WALL_SPEED = 3.5
+@export var WALL_GRAVITY = -0.5
 
 @onready var character: Node3D = $character
 @onready var camera: Camera3D = $CameraPivot/SpringArm3D/Camera3D
@@ -99,7 +101,12 @@ func double_jump():
 	velocity.y = JUMP_VELOCITY
 	doubleJumpActivated = false
 	animation_tree.set("parameters/JUMP/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-
+	
+func wall_run():
+	velocity.y = WALL_GRAVITY
+	velocity.x = direction.x * WALL_SPEED
+	velocity.z = direction.z * WALL_SPEED
+	
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	can_Action = true

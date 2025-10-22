@@ -14,6 +14,7 @@ shader_parameter/WindNoise = SubResource("NoiseTexture2D_wgcww")
 shader_parameter/noiseScalse = 20.0
 
 [node name="S_Grass" type="Node3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("ShaderMaterial_q2qj7")

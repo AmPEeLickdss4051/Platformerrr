@@ -19,6 +19,10 @@ func physics_update(_delta: float) -> void:
 		state_machine.change_state("Acceleration")
 		print(state_machine.current_state)
 	
+	if player.is_on_wall():
+		state_machine.change_state("WallRun")
+		print(state_machine.current_state)
+	
 	
 	player.move()
 	player.move_and_slide()
