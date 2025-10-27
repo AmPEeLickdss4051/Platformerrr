@@ -19,8 +19,8 @@ func physics_update(_delta: float) -> void:
 		state_machine.change_state("Acceleration")
 		print(state_machine.current_state)
 	
-	if player.is_on_wall():
-		state_machine.change_state("WallRun")
+	if player.is_on_wall() and player.is_WallJump:
+		state_machine.change_state("WallSlide")
 		print(state_machine.current_state)
 	
 	

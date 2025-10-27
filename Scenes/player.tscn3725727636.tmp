@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c0wsr8wvwan15"]
+[gd_scene load_steps=34 format=3 uid="uid://c0wsr8wvwan15"]
 
 [ext_resource type="Script" uid="uid://cq1rojsb8820q" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://mgubmvq48caj" path="res://Assets/CharacterAndAnimation/character.glb" id="2_7dp3o"]
@@ -14,14 +14,18 @@
 [ext_resource type="Script" uid="uid://cce2dq3n0c1xm" path="res://Scripts/StateScripts/double_jump.gd" id="11_gymyn"]
 [ext_resource type="Script" uid="uid://b203nyo1x4ujw" path="res://Scripts/StateScripts/jump_acc.gd" id="12_pu2lt"]
 [ext_resource type="Script" uid="uid://so7vkakr25cx" path="res://Scripts/StateScripts/wall_run.gd" id="14_7dp3o"]
-[ext_resource type="Script" uid="uid://kke1u7uqnxun" path="res://Scripts/StateScripts/wall_slide.gd" id="15_h4iuc"]
-[ext_resource type="Script" uid="uid://bvlpauoel0ur2" path="res://Scripts/StateScripts/wall_jump.gd" id="16_fd4e3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f60y1"]
 radius = 0.4
 height = 1.85
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7dp3o"]
+[sub_resource type="Animation" id="Animation_h4iuc"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fd4e3"]
+_data = {
+&"RESET": SubResource("Animation_h4iuc")
+}
 
 [sub_resource type="Animation" id="Animation_8oepg"]
 resource_name = "FastRun"
@@ -1597,7 +1601,6 @@ animation = &"AnimPack1/FastRun"
 animation = &"AnimPack1/Idle"
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_ukyrk"]
-filters = ["%GeneralSkeleton:Hips"]
 fadein_time = 0.1
 fadeout_time = 0.5
 
@@ -1627,7 +1630,7 @@ animation = &"AnimPack1/SlowRun"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_fd4e3"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2ijsl"]
-graph_offset = Vector2(-662.74524, 16.259033)
+graph_offset = Vector2(-458.9835, 2.1156921)
 nodes/output/position = Vector2(540, 100)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_igrcy")
 nodes/Idle/position = Vector2(-700, -60)
@@ -1658,7 +1661,14 @@ font_color = Color(1, 1, 0.27450982, 1)
 collision_layer = 2
 floor_stop_on_slope = false
 script = ExtResource("1_v0iea")
-HEALTH = 102
+HEALTH = null
+SPEED = 3.5
+JUMP_VELOCITY = null
+JUMP_ACC = null
+ACCELERATION = null
+BLEND_SPEED = null
+WALL_SPEED = null
+WALL_GRAVITY = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.42, 0, -3.5527137e-15, 0, 0.42, 0, 3.5527137e-15, 0, 0.42, 0, 0.3885, 0)
@@ -1669,7 +1679,7 @@ transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="character"]
 libraries = {
-&"": SubResource("AnimationLibrary_7dp3o"),
+&"": SubResource("AnimationLibrary_fd4e3"),
 &"AnimPack1": SubResource("AnimationLibrary_qqcod")
 }
 
@@ -1700,7 +1710,7 @@ script = ExtResource("2_ukyrk")
 Mouse_sens = 0.004
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.7, 0)
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.3, 0.7, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.450581e-09, -1.4901161e-08, 0)
@@ -1757,12 +1767,4 @@ metadata/_custom_type_script = "uid://cpky2bwd5l7pf"
 
 [node name="WallRun" type="Node" parent="StateMachine"]
 script = ExtResource("14_7dp3o")
-metadata/_custom_type_script = "uid://cpky2bwd5l7pf"
-
-[node name="WallSlide" type="Node" parent="StateMachine"]
-script = ExtResource("15_h4iuc")
-metadata/_custom_type_script = "uid://cpky2bwd5l7pf"
-
-[node name="WallJump" type="Node" parent="StateMachine"]
-script = ExtResource("16_fd4e3")
 metadata/_custom_type_script = "uid://cpky2bwd5l7pf"

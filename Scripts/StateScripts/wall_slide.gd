@@ -3,13 +3,13 @@ extends State
 @onready var player = $"../.."
 
 func physics_update(_delta: float) -> void:
-	if player.direction == Vector3.ZERO:
+	if Input.is_action_just_pressed("JUMP"):
+		state_machine.change_state("WallJump")
+		print(state_machine.current_state)
+		
+	if player.is_on_floor():
 		state_machine.change_state("Idle")
 		print(state_machine.current_state)
 	
-	if not player.is_on_wall():
-		state_machine.change_state("Move")
-		print(state_machine.current_state)
-	
-	player.wall_run()
+	player.wall_slide()
 	player.move_and_slide()

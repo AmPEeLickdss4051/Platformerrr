@@ -1,0 +1,81 @@
+[gd_scene load_steps=14 format=3 uid="uid://ba13nhs6gnk8f"]
+
+[ext_resource type="Script" uid="uid://b11k455ndmbhf" path="res://Scripts/save_point.gd" id="1_2bpkj"]
+[ext_resource type="PackedScene" uid="uid://caywsywk4xhtx" path="res://Assets/Meshes/Stylized Nature/TwistedTree_4.gltf" id="2_qilv1"]
+[ext_resource type="Shader" uid="uid://cw1weafoxmq0h" path="res://Assets/Shaders/coins.tres" id="3_c8mnp"]
+[ext_resource type="Texture2D" uid="uid://eyelka5ftvfv" path="res://Assets/particle/47.png" id="4_hxhin"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qilv1"]
+size = Vector3(0.4, 0.3, 0.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u6je2"]
+render_priority = 0
+shader = ExtResource("3_c8mnp")
+shader_parameter/MainTex = ExtResource("4_hxhin")
+
+[sub_resource type="Curve" id="Curve_37gic"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2l7mo"]
+curve = SubResource("Curve_37gic")
+
+[sub_resource type="CurveTexture" id="CurveTexture_q30xt"]
+
+[sub_resource type="Curve" id="Curve_3hrhc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tthw5"]
+curve = SubResource("Curve_3hrhc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wgswg"]
+resource_local_to_scene = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1000, 1)
+emission_ring_height = 5.0
+emission_ring_radius = 5.0
+emission_ring_inner_radius = 0.2
+emission_ring_cone_angle = 90.0
+radial_velocity_min = 0.49997765
+radial_velocity_max = 0.99997765
+radial_velocity_curve = SubResource("CurveTexture_q30xt")
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 0.99999774
+radial_accel_max = 0.99999774
+radial_accel_curve = SubResource("CurveTexture_2l7mo")
+scale_min = 0.099999994
+scale_max = 0.19999999
+scale_curve = SubResource("CurveTexture_tthw5")
+color = Color(8.123, 0.492, 0, 1)
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_kxdjb"]
+
+[node name="SavePoint" type="Node3D"]
+script = ExtResource("1_2bpkj")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0978193e-08, 0.14999999, -5.9604645e-08)
+shape = SubResource("BoxShape3D_qilv1")
+
+[node name="TwistedTree_42" parent="." instance=ExtResource("2_qilv1")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.00999999, 0, -0.015000001)
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="TwistedTree_42"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+material_override = SubResource("ShaderMaterial_u6je2")
+amount = 5
+lifetime = 0.5
+speed_scale = 1.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_wgswg")
+draw_pass_1 = SubResource("QuadMesh_kxdjb")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

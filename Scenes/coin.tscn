@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://cm28nxmffna73"]
+[gd_scene load_steps=26 format=4 uid="uid://cm28nxmffna73"]
 
 [ext_resource type="Texture2D" uid="uid://5wmghjqm6yf7" path="res://Assets/Meshes/Platformer/Textures/colormap.png" id="1_2qo34"]
 [ext_resource type="Script" uid="uid://bj2w1sfn2dcht" path="res://Scripts/coin.gd" id="1_jgi06"]
@@ -91,22 +91,22 @@ render_priority = 0
 shader = ExtResource("3_h2p6v")
 shader_parameter/MainTex = ExtResource("4_ffmqm")
 
-[sub_resource type="Curve" id="Curve_qbp07"]
+[sub_resource type="Curve" id="Curve_h2p6v"]
 _limits = [-200.0, 200.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_2l7mo"]
-curve = SubResource("Curve_qbp07")
+[sub_resource type="CurveTexture" id="CurveTexture_ffmqm"]
+curve = SubResource("Curve_h2p6v")
 
-[sub_resource type="CurveTexture" id="CurveTexture_q30xt"]
+[sub_resource type="CurveTexture" id="CurveTexture_81h6x"]
 
-[sub_resource type="Curve" id="Curve_7w2r2"]
+[sub_resource type="Curve" id="Curve_2l7mo"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_tthw5"]
-curve = SubResource("Curve_7w2r2")
+[sub_resource type="CurveTexture" id="CurveTexture_q30xt"]
+curve = SubResource("Curve_2l7mo")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6pu15"]
 emission_shape = 6
@@ -117,20 +117,37 @@ emission_ring_inner_radius = 0.2
 emission_ring_cone_angle = 90.0
 radial_velocity_min = 0.49997765
 radial_velocity_max = 0.99997765
-radial_velocity_curve = SubResource("CurveTexture_q30xt")
+radial_velocity_curve = SubResource("CurveTexture_81h6x")
 gravity = Vector3(0, -9, 0)
 radial_accel_min = 0.99999774
 radial_accel_max = 0.99999774
-radial_accel_curve = SubResource("CurveTexture_2l7mo")
+radial_accel_curve = SubResource("CurveTexture_ffmqm")
 scale_min = 0.19999999
 scale_max = 0.29999998
-scale_curve = SubResource("CurveTexture_tthw5")
+scale_curve = SubResource("CurveTexture_q30xt")
 color = Color(8.123444, 8.123444, 0, 1)
 collision_mode = 1
 collision_friction = 1.0
 collision_bounce = 1.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_vgc30"]
+
+[sub_resource type="Curve" id="Curve_qbp07"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7w2r2"]
+curve = SubResource("Curve_qbp07")
+
+[sub_resource type="CurveTexture" id="CurveTexture_tthw5"]
+
+[sub_resource type="Curve" id="Curve_7w2r2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6pu15"]
+curve = SubResource("Curve_7w2r2")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h2p6v"]
 resource_local_to_scene = true
@@ -142,14 +159,14 @@ emission_ring_inner_radius = 0.2
 emission_ring_cone_angle = 90.0
 radial_velocity_min = 0.49997765
 radial_velocity_max = 0.99997765
-radial_velocity_curve = SubResource("CurveTexture_q30xt")
+radial_velocity_curve = SubResource("CurveTexture_tthw5")
 gravity = Vector3(0, 0, 0)
 radial_accel_min = 0.99999774
 radial_accel_max = 0.99999774
-radial_accel_curve = SubResource("CurveTexture_2l7mo")
+radial_accel_curve = SubResource("CurveTexture_7w2r2")
 scale_min = 0.099999994
 scale_max = 0.19999999
-scale_curve = SubResource("CurveTexture_tthw5")
+scale_curve = SubResource("CurveTexture_6pu15")
 color = Color(8.123444, 8.123444, 0, 1)
 collision_mode = 1
 collision_friction = 1.0

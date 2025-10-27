@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3uej5cb1dvst"]
+
+[ext_resource type="Texture2D" uid="uid://b75ru1kwe1kbk" path="res://Assets/texture/Prototype tex/PNG/Purple/texture_04.png" id="1_yc63s"]
+
+[sub_resource type="Curve3D" id="Curve3D_x6oni"]
+resource_local_to_scene = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yc63s"]
+size = Vector3(2, 0.5, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mli26"]
+albedo_texture = ExtResource("1_yc63s")
+
+[sub_resource type="Animation" id="Animation_njj4j"]
+resource_name = "Move"
+length = 2.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_p6nba"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gyyer"]
+_data = {
+&"Move": SubResource("Animation_njj4j"),
+&"RESET": SubResource("Animation_p6nba")
+}
+
+[node name="MovePlatform" type="Path3D"]
+curve = SubResource("Curve3D_x6oni")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+transform = Transform3D(0.99999815, 2.2032127e-08, -0.0019072948, -2.664536e-15, 1, 1.1551505e-05, 0.0019072948, -1.1551484e-05, 0.99999815, -0.008069992, 4.863739e-05, 0.031111717)
+rotation_mode = 0
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="PathFollow3D"]
+remote_path = NodePath("../../AnimatableBody3D")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+transform = Transform3D(0.99999815, 2.2032127e-08, -0.0019072948, -2.664536e-15, 1, 1.1551505e-05, 0.0019072948, -1.1551484e-05, 0.99999815, -0.008069992, 4.863739e-05, 0.031111717)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+transform = Transform3D(1.0000019, 3.1796787e-13, -2.8172508e-08, -1.1990409e-12, 1, -2.3646862e-10, 2.8172508e-08, 2.2919266e-10, 1.0000019, -4.3399632e-07, 0.25, -2.7939677e-08)
+shape = SubResource("BoxShape3D_yc63s")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+collision_mask = 2
+size = Vector3(2, 0.5, 2)
+material = SubResource("StandardMaterial3D_mli26")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_gyyer")
+}
+autoplay = "Move"

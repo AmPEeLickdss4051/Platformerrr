@@ -15,3 +15,4 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		spring_arm.rotation.x -= event.relative.y * Mouse_sens
 		spring_arm.rotation.x = clamp(spring_arm.rotation.x, -PI/2, PI/4)
+		
